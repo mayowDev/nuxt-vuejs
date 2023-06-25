@@ -1,14 +1,33 @@
 <template>
     <div class="card">
-        <img class="img" />
+        <img class="img" src="#"/>
         <div class="description">
             <h4  class="title"></h4>
             <div class="tags-container">
                 <span class="tag" ></span>
                 <span class="tag" ></span>
             </div>
+         </div>
     </div>
-
+    <div class="card">
+        <img class="img" src="#"/>
+        <div class="description">
+            <h4  class="title"></h4>
+            <div class="tags-container">
+                <span class="tag" ></span>
+                <span class="tag" ></span>
+            </div>
+         </div>
+    </div>
+    <div class="card">
+        <img class="img" src="#"/>
+        <div class="description">
+            <h4  class="title"></h4>
+            <div class="tags-container">
+                <span class="tag" ></span>
+                <span class="tag" ></span>
+            </div>
+         </div>
     </div>
 </template>
 
@@ -22,14 +41,13 @@
     width: 330px;
     height: 100px;
     .img{
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 80px;
       margin-right: 1rem;
-      border-radius: 50%;
+      border-radius: 5px;
       background-color: #eee;
       animation: pulse-bg 1s infinite;
-
-
+      margin-top: 1rem;
     }
     .description{
       width: 200px;
