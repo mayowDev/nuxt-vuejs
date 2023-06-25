@@ -12,9 +12,8 @@
 
 <script setup>
   const router = useRouter();
+  const pathName= usePath()
   const showHeader =  router.currentRoute.value.fullPath === '/login' ? false : true;
-
-  const pathName = router.currentRoute.value.name 
 
 </script>
 

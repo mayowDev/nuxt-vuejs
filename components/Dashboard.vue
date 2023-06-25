@@ -25,7 +25,7 @@
 
 <script setup>
     const router = useRouter()
-    const handleSell = ()=>{router.push('/submit')}
+    const handleSell = ()=>{router.push({ path: "/submit" });}
 
 </script>
 

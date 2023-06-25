@@ -53,7 +53,7 @@ async function submitForm() {
         <option >Large black</option>
         <option >Middle white </option>
         <option >British Landrace</option>
-        <option >British Landrace</option>
+        <option >American Landrace</option>
       </select>
     </section>
     <Input
