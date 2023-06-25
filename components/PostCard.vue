@@ -1,6 +1,5 @@
 <template>
     <div class="card">
-        <!-- <img  src="../assets/breakfast.png" class="img" /> -->
         <div v-for="img of images" class="img-container">
             <img v-if=" post.featured_media === img.id"  :src="img.src" class="img" />
         </div>

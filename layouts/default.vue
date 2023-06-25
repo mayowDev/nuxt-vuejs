@@ -8,7 +8,6 @@
 
       <!--  pages content here -->
         <slot />
-      <!-- <TheFooter /> -->
   </template>
 
 <script setup>
