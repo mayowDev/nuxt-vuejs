@@ -26,9 +26,16 @@ async function submitForm() {
     body:pigDetails
 
   })
-  localStorage.setItem('pig', pigDetails)
 }
 
+// const user = useSupabaseUser()
+// onMounted(() => {
+//   watchEffect(() => {
+//     if (!user.value) {
+//       navigateTo('/login')
+//     }
+//   })
+// })
 </script>
 
 <!-- view -->
@@ -39,7 +46,16 @@ async function submitForm() {
         <span class="range-text">Submit a Batch</span>
         <span class="range-value">{{ rangeValue }}</span>
       </div>
-      <input class="range-input input" type="range" :min="minRange" :max="maxRange" step="0" v-model="rangeValue"/> 
+      <!-- <Input
+            :class="'range-input input'"  
+            :name="'range'" 
+            :id="'range'" 
+            :type="'range'" 
+            :placeholder="'Email address'" 
+            :labelText="''"
+            v-model="rangeValue"
+      /> -->
+      <input class="range-input input"   type="range" :min="minRange" :max="maxRange" step="0" v-model="rangeValue"/> 
       <div class="range-limits">
         <span>{{ minRange }}</span>
         <span>{{ maxRange }}</span>
@@ -56,29 +72,32 @@ async function submitForm() {
         <option >American Landrace</option>
       </select>
     </section>
-    <Input
-            :class="'input'"  
+      <Input
+            :class="' input'"  
+            :name="'age'" 
             :id="'age'" 
-            :inputType="'text'" 
+            :type="'text'" 
             :placeholder="'6 months'" 
             :labelText="'Age'"
-            :inputValue="age"      
+            v-model="age"
       />
       <Input
             :class="'input'"  
+            :name="'average'"
             :id="'average'" 
-            :inputType="'text'" 
+            :type="'text'" 
             :placeholder="'120 Kgs'" 
             :labelText="'Average Weight '"
-            :inputValue="averageWeight"      
+            v-model="averageWeight"      
       />
       <Input
             :class="'input'"  
+            :name="'price'"
             :id="'price'" 
-            :inputType="'text'" 
+            :type="'text'" 
             :placeholder="'0.00'" 
             :labelText="'Ask price per pig '"
-            :inputValue="price"      
+            v-model="price"      
       />
       <Button :type="'submit'" :className="'submit-btn'" :text="'Submit Request'"/>
 

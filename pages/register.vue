@@ -54,14 +54,14 @@ const handleRegister = async () => {
 }
 
 
-// const user = useSupabaseUser()
-// onMounted(() => {
-//   watchEffect(() => {
-//     if (user.value) {
-//       navigateTo('/')
-//     }
-//   })
-// })
+const user = useSupabaseUser()
+onMounted(() => {
+  watchEffect(() => {
+    if (user.value) {
+      navigateTo('/')
+    }
+  })
+})
 
 
 </script>
