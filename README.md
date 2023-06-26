@@ -1,4 +1,22 @@
-# Nuxt 3 - Peach Tech Ltd Front-end take home assesment
+# Nuxt 3 - Peach Tech Ltd Front-end take-home assessment
+
+## Screenshots of the final project
+
+- Dashboard
+
+![Dashboard](/1-dashboard.png "Dashboard Page")
+
+- Login
+
+![Login](/2.login.png "Login Page")
+
+- Submit
+
+![Submit](/3.submit.png "Submit Page")
+
+## Visit Live project :
+
+[peach-vue.vercel.com](https://peach-vuejs.vercel.app/)
 
 ## Setup
 
@@ -55,4 +73,3 @@ pnpm run preview
 yarn preview
 ```
 
-Check out the [nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
