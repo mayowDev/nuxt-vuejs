@@ -6,50 +6,69 @@ import Input from '~/components/Input.vue';
 import Button from '~/components/Button.vue';
 
 // state
+const loading = ref(false)
 const email = ref('')
 const password = ref('')
+const confirmPassword = ref('')
+
 const isError = ref(false)
 const errorMessage = ref('')
 
 const client = useSupabaseClient()
 
 // actions
-const handleLogin = async () => {
+const handleRegister = async () => {
+  if (password.value !== confirmPassword.value) {
+    isError.value = true;
+    errorMessage.value = 'Passwords do not match!';
+    password.value = '';
+    confirmPassword.value = '';
+    setTimeout(() => {
+        isError.value = false;
+        errorMessage.value = '';
+    }, 3000);
+    return;
+  }
   try {
-    const { user, error } = await client.auth.signInWithPassword({
+    loading.value = true
+
+    const {data, error } = await client.auth.signUp({
       email: email.value,
-      password: password.value
-    })
-    console.log('signin result', user,' error', error)
+      password: password.value,
+    });
+    if(!error) alert('succsfully registered. Confirm your email')
     email.value = '';
     password.value = '';
+    confirmPassword.value = '';
   } catch (error) {
-    console.log('catched error', error.message)
+    console.log('error', error.message)
     isError.value = true
     errorMessage.value = error.message;
     setTimeout(() => {
         errorMessage.value = '';
     }, 3000);
+  }finally {
+    loading.value = false
   }
 
 }
 
 
-const user = useSupabaseUser()
-onMounted(() => {
-  watchEffect(() => {
-    if (user.value) {
-      navigateTo('/')
-    }
-  })
-})
+// const user = useSupabaseUser()
+// onMounted(() => {
+//   watchEffect(() => {
+//     if (user.value) {
+//       navigateTo('/')
+//     }
+//   })
+// })
 
 
 </script>
 
 <!-- view -->
 <template>
-  <section class="login-page">
+  <section class="register-page">
     <div class="title-box">
       
       <h2>
@@ -58,7 +77,8 @@ onMounted(() => {
       </h2>
 
     </div>
-    <form  @submit.prevent="() => handleLogin()">
+    <p class="error" v-if="isError">{{ errorMessage }}</p>
+    <form  @submit.prevent="() => handleRegister()">
       <Input
             :class="'input'"  
             :name="'email'" 
@@ -77,12 +97,20 @@ onMounted(() => {
             :labelText="'Enter Your Password'"
             v-model="password"
       />
-      <p class="error" v-if="isError">{{ errorMessage }}</p>
-      <Button :type="'submit'" :className="'login-btn'" :text="'Login'"/>
+      <Input
+            :class="'input'"  
+            :name="'confirmPassword'"
+            :id="'confirmPassword'" 
+            :type="'password'" 
+            :placeholder="'Repeat Password'" 
+            :labelText="'Confirm Password'"
+            v-model="confirmPassword"
+             
+      />
+      <Button :type="'submit'" :className="'auth-btn'" :text="'Register'"/>
     </form>
     <div class="instructions">
-      <span > Dont Have an account? <NuxtLink to="/register">Register</NuxtLink></span>
-      <NuxtLink to="/login">Forgot Password</NuxtLink> 
+      <span > Already Have an account? <NuxtLink to="/login">Login</NuxtLink></span>
     </div>
       
 
@@ -91,7 +119,8 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
- .login-page{
+// *{background: none;}
+ .register-page{
     background-image: url('../assets/auth-background.png');
     background-repeat: no-repeat;
     margin-left: 0;

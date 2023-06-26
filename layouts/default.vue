@@ -1,7 +1,6 @@
 <template>
       <!--  shared header if user is logedIn -->
-      <header 
-        :class="{white: pathName ==='submit',light: pathName ==='index'}"
+      <header :class="{white: pathName ==='submit',light: pathName ==='index'}"
          v-if="showHeader">
         <TheNavbar /> 
       </header>
@@ -13,7 +12,7 @@
 <script setup>
   const router = useRouter();
   const pathName= usePath()
-  const showHeader =  router.currentRoute.value.fullPath === '/login' ? false : true;
+  const showHeader =  router.currentRoute.value.fullPath === '/login' || router.currentRoute.value.fullPath === '/register' ? false : true;
 
 </script>
 

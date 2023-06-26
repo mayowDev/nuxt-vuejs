@@ -1,23 +1,62 @@
 <template>
      <div class="input-container">
         <label :for="id"  class="label" >{{ labelText }}</label>
-        <input 
-            :class="props.className"  
-            :id="props.id" 
-            :type="props.inputType" 
-            :placeholder="props.placeholder" 
-            v-model="props.inputValue"/>
+        <input  
+            :class="className"  
+            :id="id" 
+            :type=type
+            :name="name" 
+            :placeholder="placeholder" 
+            :value="modelValue" 
+            @input="$emit('update:modelValue', $event.target.value) "
+          />
 
     </div>
 </template>
 
-<script setup>
+<script >
 
-const props = defineProps([
-    'inputType', 'id', 'className', 'placeholder', 'labelText', 'inputValue'
-])
+export default {
+    props: {
+        className:{
+            type: String,
+            required: false,
+            default: ""
+        },
+        id:{
+            type: String,
+            required: false,
+            default: ""
+        },
+        type:{
+            type: String,
+            required: true,
+            default: ""
 
+        },
+        name: {
+            type: String,
+            required: true,
+            default: ""
 
+        },
+        placeholder: {
+            type: String,
+            required: false,
+            default: ""
+        },
+        modelValue: {
+            type: [String, Number],
+            default:''
+        },
+        labelText:{
+            type: String,
+            required: true,
+            default: ""
+        }
+
+    }
+}
 </script>
 
 <style lang="scss" scoped>

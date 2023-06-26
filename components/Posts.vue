@@ -1,10 +1,18 @@
+<template>
+    <section class="posts">      
+        <h3 class="title">Latest</h3>
+        <div v-for="post of data" class="post">
+          <PostCard :post="post" :tagNames="tagNames" :images="images"/>
+        </div>
+    </section>  
+  
+</template>
 <script  setup>
 import PostCard from './PostCard.vue';
 
     const runtimeConfig = useRuntimeConfig()
     let imagesUrl = runtimeConfig.public.imagesUrl 
     const tagArray  = []
-    // const {pending,data}  = await useFetch(`/api/posts`, {lazy:true})
     const {data}  = await useFetch(`/api/posts`)
 
     data._value.map( item=>{item.tags.map( tag=>tagArray.push(tag))})
@@ -26,17 +34,6 @@ import PostCard from './PostCard.vue';
     })   
     const {data:tagNames}  = await useFetch('/api/tags',{ method: 'post', body:{tagArray}})
 </script>
-
-<template>
-    <section class="posts">      
-        <h3 class="title">Latest</h3>
-        <div v-for="post of data" class="post">
-          <PostCard :post="post" :tagNames="tagNames" :images="images"/>
-        </div>
-    </section>  
-  
-</template>
-
 
 <style lang="scss" scoped>
 .title{

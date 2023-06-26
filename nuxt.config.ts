@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // devtools: { enabled: true }
+  nitro:{
+    prerender:{
+      crawlLinks:true,
+      routes:['/']
+
+    }
+  },
   css: [
     '@/styles/main.scss',
   ],
@@ -9,6 +16,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Peach Tech - Vuejs & Nuxt3 - Abdirahman',
       meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {name: 'description', content: 'A take home project assessment build by Abdirahman for Front-end job  at Peach Tech Ltd '}
       ],
       link: [

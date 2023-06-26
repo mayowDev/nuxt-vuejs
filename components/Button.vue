@@ -11,7 +11,7 @@ const props = defineProps(['type', 'className', 'text'])
 
 <style lang="scss" scoped>
 
-.login-btn, .submit-btn{
+.login-btn,.auth-btn, .submit-btn{
     background-color: #212427;
     color: #EEEEEE;
     border: none;
